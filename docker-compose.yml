@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+    app:
+        build:
+            context: .
+            dockerfile: docker/php/Dockerfile
+        container_name: insurance_provider_mapper
+        working_dir: /var/www
+        volumes:
+            - .:/var/www
+        networks:
+            - network
+        entrypoint: [ "sh", "-c", "
+                chmod -R 777 storage bootstrap/cache &&
+                php-fpm
+              " ]
+networks:
+    network:
