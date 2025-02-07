@@ -1,5 +1,7 @@
 <?php
 
+use Src\Infrastructure\ACMEInsurancePrice;
+
 return [
 
     /*
@@ -39,7 +41,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -123,4 +125,17 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Insurance price providers
+    |--------------------------------------------------------------------------
+    */
+
+    'insurance_providers' => [
+        1 => [
+            'name' => 'ACME',
+            'class' => ACMEInsurancePrice::class
+        ]
+    ]
 ];
